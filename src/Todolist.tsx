@@ -1,8 +1,8 @@
-import React, {ChangeEvent, useCallback} from 'react';
+import React, {useCallback} from 'react';
 import {FilterValuesType} from './App';
 import {AddItemForm} from './AddItemForm';
 import {EditableSpan} from './EditableSpan';
-import {Button, Checkbox, IconButton} from '@material-ui/core';
+import {Button, IconButton} from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
 import {Task} from "./Task";
 
@@ -28,7 +28,7 @@ type PropsType = {
 
 export const Todolist = React.memo((props: PropsType) => {
 
-        console.log('Todolist is rendering...')
+        console.log('Todolist is called...')
 
         const addTask = useCallback((title: string) => {
             props.addTask(title, props.id);
@@ -65,15 +65,14 @@ export const Todolist = React.memo((props: PropsType) => {
             <AddItemForm addItem={addTask}/>
             <div>
                 {
-                    tasksForTodolist.map(t => {
-                        return <Task
+                    tasksForTodolist.map(t => <Task
                             key={t.id}
                             task={t}
                             removeTask={props.removeTask}
                             changeTaskStatus={props.changeTaskStatus}
                             changeTaskTitle={props.changeTaskTitle}
                             todolistId={props.id}/>
-                    })
+                    )
                 }
             </div>
             <div>
@@ -92,6 +91,5 @@ export const Todolist = React.memo((props: PropsType) => {
                 </Button>
             </div>
         </div>
-    }
-)
+    });
 
