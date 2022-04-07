@@ -12,17 +12,17 @@ export type TaskPropsType = {
     todolistId: string
 }
 
-export const Task = React.memo(({
+export const TaskWithRedux = React.memo(({
                                     taskId,
                                     todolistId
                                 }: TaskPropsType) => {
 
-    console.log('Task')
+        console.log('Task')
 
-    const task = useSelector<AppRootStateType, TaskType>(state => state.tasks[todolistId]
-        .filter(task => task.id === taskId)[0])
+        const task = useSelector<AppRootStateType, TaskType>(state => state.tasks[todolistId]
+            .filter(task => task.id === taskId)[0])
 
-    const dispatch = useDispatch();
+        const dispatch = useDispatch();
 
         const onClickHandler = useCallback(() => dispatch(removeTaskAC(taskId, todolistId)), [taskId, todolistId]);
 

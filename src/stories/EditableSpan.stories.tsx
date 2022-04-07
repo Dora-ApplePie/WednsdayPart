@@ -1,0 +1,35 @@
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import {AddItemForm} from "../AddItemForm";
+import {action} from "@storybook/addon-actions";
+import {EditableSpan} from "../EditableSpan";
+
+export default {
+  title: 'TODOLIST/EditableSpan',
+  component: EditableSpan,
+
+  argTypes: {
+    value: {
+      defaultValue: 'Kitty',
+      description: 'Start value EditableSpan'
+    },
+    onChange: {
+      description: 'Value EditableSpan changed'
+    }
+  },
+  // args:{
+  //   value:'kitty',
+  // }
+
+} as ComponentMeta<typeof EditableSpan>;
+
+
+const Template: ComponentStory<typeof EditableSpan> = (args) => <EditableSpan {...args} />;
+
+export const AddItemFormEditableSpanStory = Template.bind({});
+
+AddItemFormEditableSpanStory.args = {
+  onChange: action('onChange'),
+  //value: 'kitty'
+};
+
